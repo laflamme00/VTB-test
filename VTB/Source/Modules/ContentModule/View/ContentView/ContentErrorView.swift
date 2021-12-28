@@ -9,14 +9,6 @@ import Foundation
 import UIKit
 
 final class ContentErrorView: UIView {
-
-    private enum Constants {
-        static let externalVerticalOffset: CGFloat = 50
-        static let externalHorizontalOffset: CGFloat = 20
-        
-        static let internalVerticalOffset: CGFloat = 50
-        static let internalOffsets: CGFloat = 20
-    }
     
     private let errorStatusCodeLabel: UILabel = {
         let label = UILabel()
@@ -70,8 +62,8 @@ final class ContentErrorView: UIView {
         view.addSubview(self)
         
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.externalVerticalOffset).isActive = true
-        bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.externalVerticalOffset).isActive = true
+        topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.generalVerticalOffset).isActive = true
+        bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.generalVerticalOffset).isActive = true
         leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.externalHorizontalOffset).isActive = true
         trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.externalHorizontalOffset).isActive = true
     }
@@ -85,7 +77,7 @@ final class ContentErrorView: UIView {
     private func setupErrorStatusCodeView() {
         addSubview(errorStatusCodeLabel)
         
-        errorStatusCodeLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Constants.internalVerticalOffset).isActive = true
+        errorStatusCodeLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Constants.generalVerticalOffset).isActive = true
         errorStatusCodeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.internalOffsets).isActive = true
         errorStatusCodeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.internalOffsets).isActive = true
     }
@@ -104,10 +96,15 @@ final class ContentErrorView: UIView {
         errorDescriptionLabel.topAnchor.constraint(equalTo: errorTitleLabel.bottomAnchor, constant: Constants.internalOffsets).isActive = true
         errorDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.internalOffsets).isActive = true
         errorDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.internalOffsets).isActive = true
-//        errorDescriptionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -Constants.externalHorizontalOffset).isActive = true
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private enum Constants {
+    static let generalVerticalOffset: CGFloat = 50
+    static let externalHorizontalOffset: CGFloat = 20
+    static let internalOffsets: CGFloat = 20
 }

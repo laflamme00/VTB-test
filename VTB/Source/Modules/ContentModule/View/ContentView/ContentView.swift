@@ -10,16 +10,6 @@ import UIKit
 
 final class ContentView: UIView {
     
-    private enum Constants {
-        static let externalVerticalOffset: CGFloat = 50
-        static let externalHorizontalOffset: CGFloat = 20
-        
-        static let internalVerticalOffset: CGFloat = 50
-        static let internalOffsets: CGFloat = 20
-        
-        static let iconHeight: CGFloat = 100
-    }
-    
     private let thumbnailImage: UIImageView = {
         let image = UIImageView()
         
@@ -50,8 +40,8 @@ final class ContentView: UIView {
         view.addSubview(self)
         
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.externalVerticalOffset).isActive = true
-        bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.externalVerticalOffset).isActive = true
+        topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.generalVerticalOffset).isActive = true
+        bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.generalVerticalOffset).isActive = true
         leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.externalHorizontalOffset).isActive = true
         trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.externalHorizontalOffset).isActive = true
     }
@@ -86,4 +76,11 @@ final class ContentView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private enum Constants {
+    static let generalVerticalOffset: CGFloat = 50
+    static let externalHorizontalOffset: CGFloat = 20
+    
+    static let iconHeight: CGFloat = 100
 }
