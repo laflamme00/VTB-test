@@ -29,11 +29,6 @@ final class ContentViewController: UIViewController, ContentDisplayLogic {
     private var errorView = ContentErrorView()
     private let loadingView = ContentLoadingView()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -25,6 +25,5 @@ struct GetContentService: GetContentServiceProtocol {
         networkService.sendRequest { (result: Result<ContentModel?, Error>) in
             completion(result)
         }
-
     }
 }

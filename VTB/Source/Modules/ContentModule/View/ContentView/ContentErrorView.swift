@@ -10,7 +10,7 @@ import UIKit
 
 final class ContentErrorView: UIView {
     
-    private let errorStatusCodeView: UILabel = {
+    private let errorStatusCodeLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ final class ContentErrorView: UIView {
         return label
     }()
     
-    private let errorTitleView: UILabel = {
+    private let errorTitleLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ final class ContentErrorView: UIView {
         return label
     }()
     
-    private let errorDescriptionView: UILabel = {
+    private let errorDescriptionLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,14 +49,13 @@ final class ContentErrorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
         setupViews()
     }
     
     func setTitles(errorModel: ErrorModel) {
-        errorStatusCodeView.text = errorModel.statusCode
-        errorTitleView.text = errorModel.title
-        errorDescriptionView.text = errorModel.description
+        errorStatusCodeLabel.text = errorModel.statusCode
+        errorTitleLabel.text = errorModel.title
+        errorDescriptionLabel.text = errorModel.description
     }
     
     func setupOnSuperview(view: UIView) {
@@ -76,28 +75,28 @@ final class ContentErrorView: UIView {
     }
     
     private func setupErrorStatusCodeView() {
-        addSubview(errorStatusCodeView)
+        addSubview(errorStatusCodeLabel)
         
-        errorStatusCodeView.topAnchor.constraint(equalTo: topAnchor, constant: 150).isActive = true
-        errorStatusCodeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        errorStatusCodeView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        errorStatusCodeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 150).isActive = true
+        errorStatusCodeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        errorStatusCodeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
     }
     
     private func setupErrorTitleView() {
-        addSubview(errorTitleView)
+        addSubview(errorTitleLabel)
         
-        errorTitleView.topAnchor.constraint(equalTo: errorStatusCodeView.bottomAnchor, constant: 20).isActive = true
-        errorTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        errorTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        errorTitleLabel.topAnchor.constraint(equalTo: errorStatusCodeLabel.bottomAnchor, constant: 20).isActive = true
+        errorTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        errorTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
     }
     
     private func setupErrorDescriptionView() {
-        addSubview(errorDescriptionView)
+        addSubview(errorDescriptionLabel)
         
-        errorDescriptionView.topAnchor.constraint(equalTo: errorTitleView.bottomAnchor, constant: 20).isActive = true
-        errorDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        errorDescriptionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        errorDescriptionView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -50).isActive = true
+        errorDescriptionLabel.topAnchor.constraint(equalTo: errorTitleLabel.bottomAnchor, constant: 20).isActive = true
+        errorDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        errorDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        errorDescriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -50).isActive = true
     }
     
     required init?(coder: NSCoder) {

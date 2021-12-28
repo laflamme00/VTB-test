@@ -21,8 +21,6 @@ final class ContentViewModel: ContentBusinessLogic {
         static let error503description = "The server is temporarily unable to service your request due to maintenance downtime or capacity problem. Please, try again later."
     }
     
-    // TODO: - +VideoDataSourceProvider (func getVideo)
-    
     weak var viewController: ContentDisplayLogic?
     private var videoProvider: VideoPaybackProviderProtocol
     
