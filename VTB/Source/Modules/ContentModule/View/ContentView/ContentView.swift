@@ -10,17 +10,27 @@ import UIKit
 
 final class ContentView: UIView {
     
-    private let thumbailView: UIImageView = {
-        let view = UIImageView()
+    private enum Constants {
+        static let externalVerticalOffset: CGFloat = 50
+        static let externalHorizontalOffset: CGFloat = 20
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
-        view.backgroundColor = .clear
+        static let internalVerticalOffset: CGFloat = 50
+        static let internalOffsets: CGFloat = 20
         
-        return view
+        static let iconHeight: CGFloat = 100
+    }
+    
+    private let thumbnailImage: UIImageView = {
+        let image = UIImageView()
+        
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.backgroundColor = .clear
+        
+        return image
     }()
     
-    private let playIconView: UIImageView = {
+    private let playIconImage: UIImageView = {
         let view = UIImageView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -40,37 +50,37 @@ final class ContentView: UIView {
         view.addSubview(self)
         
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
-        bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
-        leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
-        trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.externalVerticalOffset).isActive = true
+        bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.externalVerticalOffset).isActive = true
+        leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.externalHorizontalOffset).isActive = true
+        trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.externalHorizontalOffset).isActive = true
     }
     
-    func setThumbail(image: UIImage) {
-        thumbailView.image = image
+    func setThumbnail(image: UIImage) {
+        thumbnailImage.image = image
     }
     
     private func setupViews() {
-        setupThumbailView()
+        setupThumbnailView()
         setupPlayIconView()
     }
     
     private func setupPlayIconView() {
-        thumbailView.addSubview(playIconView)
+        thumbnailImage.addSubview(playIconImage)
         
-        playIconView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        playIconView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        playIconView.centerYAnchor.constraint(equalTo: thumbailView.centerYAnchor).isActive = true
-        playIconView.centerXAnchor.constraint(equalTo: thumbailView.centerXAnchor).isActive = true
+        playIconImage.heightAnchor.constraint(equalToConstant: Constants.iconHeight).isActive = true
+        playIconImage.widthAnchor.constraint(equalToConstant: Constants.iconHeight).isActive = true
+        playIconImage.centerYAnchor.constraint(equalTo: thumbnailImage.centerYAnchor).isActive = true
+        playIconImage.centerXAnchor.constraint(equalTo: thumbnailImage.centerXAnchor).isActive = true
     }
     
-    private func setupThumbailView() {
-        addSubview(thumbailView)
+    private func setupThumbnailView() {
+        addSubview(thumbnailImage)
         
-        thumbailView.topAnchor.constraint(equalTo: topAnchor, constant: .zero).isActive = true
-        thumbailView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .zero).isActive = true
-        thumbailView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .zero).isActive = true
-        thumbailView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .zero).isActive = true
+        thumbnailImage.topAnchor.constraint(equalTo: topAnchor, constant: .zero).isActive = true
+        thumbnailImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .zero).isActive = true
+        thumbnailImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .zero).isActive = true
+        thumbnailImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .zero).isActive = true
     }
     
     required init?(coder: NSCoder) {

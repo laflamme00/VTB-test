@@ -69,7 +69,7 @@ final class ContentViewController: UIViewController, ContentDisplayLogic {
         case .readyForPlay(let image):
             loadingView.stopAnimating()
             loadingView.removeFromSuperview()
-            contentView.setThumbail(image: image)
+            contentView.setThumbnail(image: image)
             contentView.setupOnSuperview(view: view)
             setupTapGesture()
             
